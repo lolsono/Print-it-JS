@@ -65,6 +65,7 @@ function displaySlide(media) {
 }
 
 function updateDots() {
+	const childElements = dotsContainner.querySelectorAll(".dot");
 	// Remove dot_selected class from all dots
 	childElements.forEach(dot => dot.classList.remove("dot_selected"))
 
@@ -74,23 +75,28 @@ function updateDots() {
 }
 
 
-//creation des dots
-for (let i = 0; i < NombreItem; i++) {
+function GenerateDots () {
+	//creation des dots
+	for (let i = 0; i < NombreItem; i++) {
 
-	//crée une nouvelle div enfant de dots
-	const createDot = document.createElement("div")
+		//crée une nouvelle div enfant de dots
+		const createDot = document.createElement("div")
 
-	//ajouter la nouvelle class adapter
-	createDot.classList.add("dot")
+		//ajouter la nouvelle class adapter
+		createDot.classList.add("dot")
 
-	//ajout sur le parent dotsContainner
-	dotsContainner.appendChild(createDot);
+		//ajout sur le parent dotsContainner
+		dotsContainner.appendChild(createDot);
 
-	dotsContainner.querySelector(":first-child").classList.add("dot_selected")
+		dotsContainner.querySelector(":first-child").classList.add("dot_selected")
 
-};
+	}
+}
 
 
 //ecouteur evenement
 flecheDroite.addEventListener('click', nextSlide);
 flecheGauche.addEventListener('click', previousSlide);
+
+//ajout la boucle for dans 
+GenerateDots();
